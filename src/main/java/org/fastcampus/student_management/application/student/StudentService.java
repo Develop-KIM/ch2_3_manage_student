@@ -1,5 +1,6 @@
 package org.fastcampus.student_management.application.student;
 
+import java.util.Optional;
 import org.fastcampus.student_management.application.student.dto.StudentInfoDto;
 import org.fastcampus.student_management.domain.Student;
 import org.fastcampus.student_management.repo.StudentRepository;
@@ -13,7 +14,7 @@ public class StudentService {
   }
 
   public void saveStudent(StudentInfoDto studentInfoDto) {
-    Student student = new Student(studentInfoDto.getName(), studentInfoDto.getAge(), studentInfoDto.getAddress());
+    Student student = new Student(studentInfoDto.name(), studentInfoDto.age(), studentInfoDto.address());
     studentRepository.save(student);
   }
 
@@ -23,10 +24,10 @@ public class StudentService {
   }
 
   public void activateStudent(String name) {
-    // TODO: 과제 구현 부분
+      getStudent(name).activate();
   }
 
   public void deactivateStudent(String name) {
-    // TODO: 과제 구현 부분
+      getStudent(name).deactivate();
   }
 }
